@@ -13,7 +13,7 @@ Add a Pinterest "Follow" button to your sidebar with this widget.
 
 = Follow Button Features: =
 
-* Simply drag the widget to your sidebar, enter your Pinterest username, and it works!
+* Simply drag the widget to your sidebar, enter your Pinterest Username, and voila!
 * Select from any of the four official Follow button images from Pinterest
 * Optionally align (float) the button left, right or centered
 
@@ -30,7 +30,7 @@ Add a Pinterest "Follow" button to your sidebar with this widget.
 
 1. Use the automatic installer in your WordPress admin.
 1. Activate the plugin.
-1. Configure the plugin by going to **Pin It Button** that appears in your admin menu .
+1. Go to Widgets.
 
 Alernatively, you can download this plugin, unzip the contents, then FTP upload to the `/wp-content/plugins/` directory.
 
