@@ -1,0 +1,7 @@
+/* Pinterest "Follow" Button Public CSS */
+
+.pib_widget_follow_button {
+    clear: both;
+    display: block;
+    overflow: hidden;
+}
