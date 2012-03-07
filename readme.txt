@@ -44,7 +44,7 @@ Note: If you overwrite the plugin using FTP upload, you may lose some saved sett
 
 == Screenshots ==
 
-1. Settings page
+1. Widget options
 
 == Changelog ==
 
