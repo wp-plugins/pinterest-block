@@ -3,7 +3,7 @@ Contributors: pderksen
 Tags: pinterest, social, follow
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: trunk
+Stable tag: 1.0.0
 
 Add a Pinterest "Follow" button to your sidebar with this widget.
 
