@@ -1,0 +1,42 @@
+/* Pinterest Block Admin CSS */
+
+.form-table {
+    margin-bottom: 10px !important; 
+}
+
+.form-table td {
+    padding: 1px 10px;
+}
+
+.form-table label {
+    padding-left: 3px;
+}
+.form-table input[type="checkbox"] {
+    margin-right: 5px;
+	width: auto;
+}
+
+.form-table textarea {
+    line-height: 1.3em;
+    width: 350px;
+}
+
+.pblock-postbox {
+    margin: 10px 10px 0 0;
+}
+
+.pblock-settings { 
+	width: 70%;
+}
+
+.pblock-right-column {
+    width: 30%;
+}
+
+.postbox .pblock-hndle {
+	cursor: pointer;
+}
+
+#pblock-pointer-primary {
+	margin: 0 5px 0 0;
+}
