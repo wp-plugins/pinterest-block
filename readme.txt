@@ -3,28 +3,29 @@ Contributors: pderksen
 Tags: pinterest, social, follow
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 
 Add a Pinterest "Follow" button to your sidebar with this widget.
 
 == Description ==
 
-Add a Pinterest "Follow" button to your sidebar with this widget.
+Add a Pinterest "Follow" button to your sidebar with this widget. Also includes a shortcode.
 
-= Follow Button Features: =
+### "Follow" Button Features: ###
 
-* Simply drag the widget to your sidebar, enter your Pinterest Username, and voila!
-* Select from any of the four official Follow button images from Pinterest
-* Optionally align (float) the button left, right or centered
+* Simply drag the widget to your sidebar, enter your Pinterest username, and voila!
+* Select from the 4 official Follow button images or specify your own
+* Use a shortcode to display the Follow button anywhere else
 
 = Resources =
 
-* Official Site: [PinterestPlugin.com](http://pinterestplugin.com)
-* [User Support & Feature Requests](http://pinterestplugin.com/user-support)
+* [Pinterest Plugin Updates &raquo;](http://pinterestplugin.com "Pinterest Plugins for WordPress")
+* [User Support & Feature Requests &raquo;](http://pinterestplugin.com/user-support  "Pinterest Plugins for WordPress User Support")
 
 = More Pinterest Plugins =
 
 * [Pinterest "Pin It" Button](http://wordpress.org/extend/plugins/pinterest-pin-it-button/)
+* [Pinterest Block](http://wordpress.org/extend/plugins/pinterest-block/)
 
 == Installation ==
 
@@ -47,6 +48,12 @@ Note: If you overwrite the plugin using FTP upload, you may lose some saved sett
 1. Widget options
 
 == Changelog ==
+
+= 1.1.0 =
+* Added shortcode functionality
+* Added settings page with instructions and links
+* Alignment updates
+* CSS/styling updates
 
 = 1.0.0 =
 * Initial release

@@ -5,5 +5,6 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 //Remove option records from options table
+delete_option( 'pfb_ignore' );
 
 ?>

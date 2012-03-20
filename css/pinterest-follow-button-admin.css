@@ -1,1 +1,42 @@
 /* Pinterest "Follow" Button Admin CSS */
+
+.form-table {
+    margin-bottom: 10px !important; 
+}
+
+.form-table td {
+    padding: 1px 10px;
+}
+
+.form-table label {
+    padding-left: 3px;
+}
+.form-table input[type="checkbox"] {
+    margin-right: 5px;
+	width: auto;
+}
+
+.form-table textarea {
+    line-height: 1.3em;
+    width: 350px;
+}
+
+.pfb-postbox {
+    margin: 10px 10px 0 0;
+}
+
+.pfb-settings { 
+	width: 70%;
+}
+
+.pfb-right-column {
+    width: 30%;
+}
+
+.postbox .pfb-hndle {
+	cursor: pointer;
+}
+
+#pfb-pointer-primary {
+	margin: 0 5px 0 0;
+}
