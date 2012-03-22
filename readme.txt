@@ -3,13 +3,13 @@ Contributors: pderksen
 Tags: pinterest, social, block, protect
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 1.0.0
+Stable tag: trunk
 
-Block selected posts and pages categories from getting pinned on Pinterest.
+Block selected posts and pages from getting pinned on Pinterest.
 
 == Description ==
 
-Block selected posts and pages categories from getting pinned on Pinterest.
+Block selected posts and pages from getting pinned on Pinterest.
 
 ### Pinterest Block Features: ###
 
