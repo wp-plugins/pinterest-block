@@ -147,7 +147,7 @@ function pblock_create_settings_page() {
 	?>
         <div class="wrap">
 			<a href="http://pinterestplugin.com/" target="_blank"><div id="pinterest-button-icon-32" class="icon32"
-                style="background: url(<?php echo plugins_url( '/img/pinterest-button-icon-med.png', __FILE__ ); ?>) no-repeat;"><br /></div></a>
+                style="background: url(<?php echo plugins_url( '/img/pinterest-button-icon-med.png', __FILE__ ); ?>) no-repeat;"></div></a>
             <h2>Pinterest Block Settings</h2>
             
             <div class="metabox-holder">
