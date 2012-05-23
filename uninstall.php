@@ -1,23 +1,17 @@
 <?php
+
 //If uninstall/delete not called from WordPress then exit
 if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
 //Remove option records from options table
-delete_option( 'pblock_options' );
-delete_option( 'pblock_ignore' );
+delete_option( 'pblock_settings' );
+delete_option( 'pblock_hide_pointer' );
 
-//Remove all Post/Page meta from postmeta table
-	global $wpdb;
-    $sql = "SELECT post_id
-            FROM $wpdb->postmeta
-            WHERE meta_key = 'pblock_pinning_blocked'"; 
-            
-    $results = $wpdb->get_results( $sql, ARRAY_A );
-        
-    foreach( $results as $postid ) {
-       $postID = $postid['post_id'];
-       delete_post_meta( $postID, 'pblock_pinning_blocked' );
-    }
-?>
+//Remove custom post meta fields
+$posts = get_posts( array( 'numberposts' => -1 ) );
+
+foreach( $posts as $post ) {
+    delete_post_meta( $post->ID, 'pblock_pinning_blocked' );
+}

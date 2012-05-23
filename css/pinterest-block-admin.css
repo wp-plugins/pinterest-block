@@ -21,22 +21,29 @@
     width: 350px;
 }
 
-.pblock-postbox {
-    margin: 10px 10px 0 0;
-}
-
-.pblock-settings { 
-	width: 70%;
-}
-
-.pblock-right-column {
-    width: 30%;
-}
-
 .postbox .pblock-hndle {
 	cursor: pointer;
 }
 
+.pblock-admin-banner {
+	margin-bottom: 15px;
+}
+
+table#share_plugin_buttons tr td {
+    padding-right: 10px;
+    vertical-align: top;
+}
+
 #pblock-pointer-primary {
 	margin: 0 5px 0 0;
+}
+
+.submit-settings {
+	padding-bottom: 1.5em;
+}
+
+/* External link icon */
+a.external {
+    background: url(../img/icon-external-link.gif) center right no-repeat;
+    padding-right: 17px;
 }

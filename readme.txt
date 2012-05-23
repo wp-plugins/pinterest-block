@@ -2,7 +2,7 @@
 Contributors: pderksen
 Tags: pinterest, social, block, protect
 Requires at least: 3.0
-Tested up to: 3.3.1
+Tested up to: 3.3.2
 Stable tag: trunk
 
 Block selected posts and pages from getting pinned on Pinterest.
@@ -20,12 +20,13 @@ Block selected posts and pages from getting pinned on Pinterest.
 = Resources =
 
 * [Pinterest Plugin Updates &raquo;](http://pinterestplugin.com "Pinterest Plugins for WordPress")
-* [User Support & Feature Requests &raquo;](http://pinterestplugin.com/user-support  "Pinterest Plugins for WordPress User Support")
+* [User Support & Feature Requests &raquo;](http://pinterestplugin.com/support  "Pinterest Plugins for WordPress User Support")
 
 = More Pinterest Plugins =
 
-* [Pinterest "Pin It" Button](http://wordpress.org/extend/plugins/pinterest-pin-it-button/)
-* [Pinterest "Follow" Button](http://wordpress.org/extend/plugins/pinterest-follow-button/)
+* [Top Pinned Posts](http://pinterestplugin.com/top-pinned-posts)
+* [Pinterest "Pin It" Button](http://pinterestplugin.com/pin-it-button/)
+* ["Follow" Button](http://pinterestplugin.com/follow-button)
 
 == Installation ==
 
@@ -41,7 +42,7 @@ Note: If you overwrite the plugin using FTP upload, you may lose some saved sett
 
 **I'd like to report a bug or submit a feature request.**
 
-* Go to the [User Support & Feature Requests Forum](http://pinterestplugin.com/user-support)
+* Go to the [User Support & Feature Requests Forum](http://pinterestplugin.com/support)
 
 == Screenshots ==
 
@@ -49,6 +50,9 @@ Note: If you overwrite the plugin using FTP upload, you may lose some saved sett
 2. Per post option
 
 == Changelog ==
+
+= 1.0.1 =
+* Fixed: Misc bug fixes and performance improvements
 
 = 1.0.0 =
 * Initial release
