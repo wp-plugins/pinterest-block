@@ -24,7 +24,7 @@ Block selected posts and pages from getting pinned on Pinterest.
 
 = More Pinterest Plugins =
 
-* [Top Pinned Posts](http://pinterestplugin.com/top-pinned-posts)
+* [Top Pinned Posts](http://pinterestplugin.com/)
 * [Pinterest "Pin It" Button](http://pinterestplugin.com/pin-it-button/)
 * ["Follow" Button](http://pinterestplugin.com/follow-button)
 
