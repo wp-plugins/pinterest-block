@@ -2,7 +2,7 @@
 Contributors: pderksen
 Tags: pinterest, social, block, protect
 Requires at least: 3.0
-Tested up to: 3.3.2
+Tested up to: 3.4.1
 Stable tag: trunk
 
 Block selected posts and pages from getting pinned on Pinterest.
