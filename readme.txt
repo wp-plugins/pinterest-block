@@ -1,8 +1,8 @@
 === Pinterest Block ===
 Contributors: pderksen
-Tags: pinterest, social, block, protect
+Tags: pinterest, pinterest block, social, block, protect
 Requires at least: 3.0
-Tested up to: 3.5.1
+Tested up to: 3.6
 Stable tag: trunk
 
 Block selected posts and pages from getting pinned on Pinterest.
@@ -20,7 +20,6 @@ Block selected posts and pages from getting pinned on Pinterest.
 = More Pinterest Plugins =
 
 * ["Pin It" Button Pro](http://pinterestplugin.com/pin-it-button-pro/?utm_source=wordpress_org&utm_medium=link&utm_campaign=pinterest_block)
-* [Top Pinned Posts](http://pinterestplugin.com/top-pinned-posts/?utm_source=wordpress_org&utm_medium=link&utm_campaign=pinterest_block)
 * ["Follow" Button](http://pinterestplugin.com/follow-button)
 
 == Installation ==
@@ -35,7 +34,7 @@ Note: If you overwrite the plugin using FTP upload, you may lose some saved sett
 
 == Frequently Asked Questions ==
 
-Go to Support (link above)
+None yet...
 
 == Screenshots ==
 
