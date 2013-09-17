@@ -1,8 +1,8 @@
 === Pinterest Block ===
 Contributors: pderksen
 Tags: pinterest, pinterest block, social, block, protect
-Requires at least: 3.0
-Tested up to: 3.6
+Requires at least: 3.4.2
+Tested up to: 3.6.1
 Stable tag: trunk
 
 Block selected posts and pages from getting pinned on Pinterest.
