@@ -1,44 +1,41 @@
 <?php
-/*
-  Plugin Name: Pinterest Block
-  Plugin URI: http://pinterestplugin.com
-  Description: Block selected posts and pages categories from getting pinned on Pinterest.
-  Author: Phil Derksen
-  Author URI: http://pinterestplugin.com
-  Version: 1.0.1
-  License: GPLv2
-  Copyright 2012 Phil Derksen (phil@pinterestplugin.com)
-*/  
 
-/***************************
-* Global Constants
-***************************/
+/**
+ * Pinterest Block
+ *
+ * @package   PB
+ * @author    Phil Derksen <pderksen@gmail.com>
+ * @license   GPL-2.0+
+ * @link      http://pinplugins.com
+ * @copyright 2012-2015 Phil Derksen
+ *
+ * @wordpress-plugin
+ * Plugin Name: Pinterest Block
+ * Plugin URI: http://pinplugins.com/disable-pinning/
+ * Description: Block selected posts and pages from getting pinned on Pinterest.
+ * Version: 1.0.2
+ * Author: Phil Derksen
+ * Author URI: http://philderksen.com
+ * License: GPL-2.0+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * GitHub Plugin URI: https://github.com/pderksen/WP-Pinterest-Block
+ */
 
-define( 'PBLOCK_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-define( 'PBLOCK_META_TAG', '<meta name="pinterest" content="nopin" />' . "\n" );
+if ( ! defined( 'PBLOCK_PLUGIN_BASENAME' ) ) {
+	define( 'PBLOCK_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+}
+
+if ( ! defined( 'PBLOCK_META_TAG' ) ) {
+	define( 'PBLOCK_META_TAG', '<meta name="pinterest" content="nopin" />' . "\n" );
+}
+
+if ( ! defined( 'PINPLUGIN_BASE_URL' ) ) {
+	define( 'PINPLUGIN_BASE_URL', 'http://pinplugins.com/' );
+}
+
 
 $pblock_options = get_option( 'pblock_options' );
 	
-//Plugin install/activation
-
-function pblock_install() {
-	//Deactivate plugin if WP version too low
-    if ( version_compare( get_bloginfo( 'version' ), '3.0', '<' ) ) {
-        deactivate_plugins( basename( __FILE__ ) );
-    }
-    
-    //All settings values are off by default, so no need to initialize here
-}
-
-register_activation_hook( __FILE__, 'pblock_install' );
-
-//Debugging
-
-function pblock_debug_print( $value ) {
-    print_r( '<br/><br/>' );
-	print_r( $value );
-}
-
 //Add settings page to admin menu
 //Use $page variable to load CSS/JS ONLY for this plugin's admin page
 
@@ -58,60 +55,6 @@ function pblock_add_admin_css_js() {
 	wp_enqueue_script( 'pinterest-block', plugins_url( '/js/pinterest-block-admin.js', __FILE__ ), array( 'jquery' ) );
 }
 
-//Add first-install pointer CSS/JS & functionality
-
-function pblock_add_admin_css_js_pointer() {
-	wp_enqueue_style( 'wp-pointer' );
-    wp_enqueue_script( 'wp-pointer' );
-	
-    add_action( 'admin_print_footer_scripts', 'pblock_admin_print_footer_scripts' );
-}
-
-add_action( 'admin_enqueue_scripts', 'pblock_add_admin_css_js_pointer' );
-
-//Add pointer popup message when plugin first installed
-
-function pblock_admin_print_footer_scripts() {
-    //Check option to hide pointer after initial display
-    if ( !get_option( 'pblock_hide_pointer' ) ) {
-        $pointer_content = '<h3>Pinterest Block Installed!</h3>';
-        $pointer_content .= '<p>Congratulations. You have just installed the Pinterest Block Plugin. ' .
-            'Now just configure your settings to specify what gets blocked.</p>';
-         
-        $url = admin_url( 'admin.php?page=' . PBLOCK_PLUGIN_BASENAME );
-        
-        ?>
-
-        <script type="text/javascript">
-            //<![CDATA[
-            jQuery(document).ready( function($) {
-                $("#menu-plugins").pointer({
-                    content: '<?php echo $pointer_content; ?>',
-                    buttons: function( event, t ) {
-                        button = $('<a id="pointer-close" class="button-secondary">Close</a>');
-                        button.bind("click.pointer", function() {
-                            t.element.pointer("close");
-                        });
-                        return button;
-                    },
-                    position: "left",
-                    close: function() { }
-            
-                }).pointer("open");
-              
-                $("#pointer-close").after('<a id="pointer-primary" class="button-primary" style="margin-right: 5px;" href="<?php echo $url; ?>">' + 
-                    'Pinterest Block Settings');
-            });
-            //]]>
-        </script>
-
-        <?php
-        
-        //Update option so this pointer is never seen again
-        update_option( 'pblock_hide_pointer', 1 );
-	}
-}
-
 //Register settings
 
 function pblock_register_settings() {
@@ -127,97 +70,10 @@ function pblock_create_settings_page() {
 	?>
 	
     <div class="wrap">
-		<a href="http://pinterestplugin.com/" target="_blank"><div id="pinterest-button-icon-32" class="icon32"
-			style="background: url(<?php echo plugins_url( '/img/pinterest-button-icon-med.png', __FILE__ ); ?>) no-repeat;"></div></a>
 		<h2><?php _e( 'Pinterest Block Settings', 'pblock' ); ?></h2>
 		
 		<div id="poststuff" class="metabox-holder has-right-sidebar">
 
-			<!-- Fixed right sidebar like WP post edit screen -->
-			<div id="side-info-column" class="inner-sidebar">
-				<div id="side-sortables" class="meta-box-sortables ui-sortable">
-					<div class="pblock-admin-banner">
-						<a href="http://pinterestplugin.com/ad-tpp-from-pblock" target="_blank">
-							<img src="http://cdn.pinterestplugin.com/img/top-pinned-posts-ad-01.jpg" alt="Top Pinned Posts Pinterest Plugin for WordPress"></img>
-						</a>
-					</div>
-                    
-					<div class="postbox">
-						<div class="handlediv pblock-handlediv" title="Click to toggle"><br /></div>
-						<h3 class="hndle pblock-hndle"><?php _e( 'Spread the Word', 'pblock' ); ?></h3>
-						
-						<div class="inside">
-                            <p><?php _e( 'Like this plugin? A share would be awesome!', 'pblock' ); ?></p>
-							
-							<table id="share_plugin_buttons">
-								<tr>
-									<td><?php echo pblock_share_twitter(); ?></td>
-									<td><?php echo pblock_share_pinterest(); ?></td>
-									<td><?php echo pblock_share_facebook(); ?></td>
-								</tr>
-							</table>
-                            
-                            <p>
-                                &raquo; <a href="http://wordpress.org/extend/plugins/pinterest-pin-it-button/" target="_blank" class="external">
-									<?php _e( 'Rate it on WordPress', 'pblock' ); ?></a>
-                            </p>
-						</div>
-					</div>
-
-					<div class="postbox">
-						<div class="handlediv pblock-handlediv" title="Click to toggle"><br /></div>
-						<h3 class="hndle pblock-hndle"><?php _e( 'Plugin Support', 'tpp' ); ?></h3>
-						
-						<div class="inside">
-							<p>
-								&raquo; <a href="http://pinterestplugin.com/support-pinterest-block" target="_blank" class="external">
-								<?php _e( 'Support & Knowledge Base', 'pblock' ); ?></a>
-							</p>
-							<p>
-								<?php _e( 'Email support provided to licensed users only.', 'pblock' ); ?>
-							</p>
-							<p>
-								&raquo; <strong><a href="http://pinterestplugin.com/buy-support-pinterest-block" target="_blank" class="external">
-								<?php _e( 'See Support Pricing', 'pblock' ); ?></a></strong>
-							</p>							
-						</div>
-					</div>
-					
-					<div class="postbox">
-						<div class="handlediv pblock-handlediv" title="Click to toggle"><br /></div>
-						<h3 class="hndle pblock-hndle"><?php _e( 'More Pinterest Plugins', 'pblock' ); ?></h3>
-						
-						<div class="inside">
-							<ul>
-								<li>&raquo; <a href="http://pinterestplugin.com/top-pinned posts" target="_blank" class="external">Top Pinned Posts</a></li>
-								<li>&raquo; <a href="http://pinterestplugin.com/pin-it-button/" target="_blank" class="external">"Pin It" Button</a></li>
-								<li>&raquo; <a href="http://pinterestplugin.com/follow-button" target="_blank" class="external">"Follow" Button</a></li>
-							</ul>
-						</div>
-					</div>
-					
-					<div class="postbox">
-						<div class="handlediv pblock-handlediv" title="Click to toggle"><br /></div>
-						<h3 class="hndle pblock-hndle"><?php _e( 'Pinterest Plugin News', 'pblock' ); ?></h3>
-						
-						<div class="inside">
-							<? echo pblock_rss_news(); ?>
-						</div>
-					</div>
-
-					<div class="postbox">
-						<div class="handlediv pblock-handlediv" title="Click to toggle"><br /></div>
-						<h3 class="hndle pblock-hndle"><?php _e( 'Subscribe by Email', 'pblock' ); ?></h3>
-						
-						<div class="inside">
-							<p><?php _e( 'Want to know when new Pinterest plugins and features are released?', 'pblock' ); ?></p>
-							&raquo; <strong><a href="http://pinterestplugin.com/newsletter-from-plugin" target="_blank" class="external">
-								<?php _e( 'Get Updates', 'pblock' ); ?></a></strong>
-						</div>
-					</div>
-				</div>
-            </div>
-			
 			<div id="post-body">
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">
@@ -280,7 +136,7 @@ function pblock_create_settings_page() {
 										<td>
 											<p>
 												Pinterest Block simply disables pinning by inserting the official  
-												<a href="http://pinterestplugin.com/disable-pinning/" target="_blank">meta tag</a>.
+												<a href="<?php echo PINPLUGIN_BASE_URL ?>disable-pinning/" target="_blank">meta tag</a>.
 											</p>
 											</p>
 												Besides the types of pages above, <strong>any individual post or page</strong> can be blocked.
@@ -290,7 +146,7 @@ function pblock_create_settings_page() {
 											<p>
 												Note that the meta tag only blocks people from pinning using the official bookmarklet or "Add" feature
 												on Pinterest.com itself. <em>"Pin It" buttons on the page might still work.</em> Get the
-												<a href="http://pinterestplugin.com/pin-it-button/" target="_blank">"Pin It" Button plugin</a> 
+												<a href="<?php echo PINPLUGIN_BASE_URL ?>pin-it-button/" target="_blank">"Pin It" Button plugin</a>
 												to specify the posts and pages the button should or should not be shown on.
 											</p>
 										</td>
@@ -327,76 +183,7 @@ function pblock_plugin_action_links( $links, $file ) {
 
 add_filter( 'plugin_action_links', 'pblock_plugin_action_links', 10, 2 );
 
-//Render rss items from pinterestplugin.com
-//http://codex.wordpress.org/Function_Reference/fetch_feed
-
-function pblock_rss_news() {
-	// Get RSS Feed(s)
-	include_once(ABSPATH . WPINC . '/feed.php');
-
-	// Get a SimplePie feed object from the specified feed source.
-	$rss = fetch_feed('http://pinterestplugin.com/feed/');
-	
-	if (!is_wp_error( $rss ) ) {
-		// Checks that the object is created correctly 
-		// Figure out how many total items there are, but limit it to 5. 
-		$maxitems = $rss->get_item_quantity(3); 
-
-		// Build an array of all the items, starting with element 0 (first element).
-		$rss_items = $rss->get_items(0, $maxitems); 
-	}
-	
-	?>
-
-	<ul>
-		<?php if ($maxitems == 0): ?>
-			<li><?php _e( 'No items.', 'pblock' ); ?></li>
-		<?php else: ?>
-			<?php
-			// Loop through each feed item and display each item as a hyperlink.
-			foreach ( $rss_items as $item ): ?>
-				<li>
-					&raquo; <a href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank" class="external">
-						<?php echo esc_html( $item->get_title() ); ?></a>
-				</li>
-			<?php endforeach; ?>
-		<?php endif; ?>
-	</ul>
-	
-	<?php
-}
-
-//Render Facebook Share button
-//http://developers.facebook.com/docs/share/
-
-function pblock_share_facebook() {
-	?>	
-	<a name="fb_share" type="button" share_url="http://pinterestplugin.com/" alt="Share on Facebook"></a> 
-	<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>	
-	<?php
-}
-
-//Render Twitter button
-//https://twitter.com/about/resources/buttons
-
-function pblock_share_twitter() {
-	?>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://pinterestplugin.com" data-text="I'm using the Pinterest Block Plugin for WordPress. It rocks!" data-count="none">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
-	<?php
-}
-
-//Render Pin It button
-//Render in iFrame otherwise it messes up the WP admin left menu
-
-function pblock_share_pinterest() {
-	?>
-	<a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fpinterestplugin.com%2F&media=http%3A%2F%2Fpinterestplugin.com%2Fimg%2Fpinterest-block-wordpress-plugin.png&description=Pinterest%20Block%20WordPress%20Plugin%20--%20http%3A%2F%2Fpinterestplugin.com%2F" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
-	<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
-	<?php
-}
-
-//Adds a meta box to the main column on the Post and Page edit screens 
+//Adds a meta box to the main column on the Post and Page edit screens
 
 function pblock_add_meta_box() {
 	add_meta_box( 'pblock_meta','Pinterest Block Settings', 'pblock_meta_box_content', 'page', 'advanced', 'high' );
